@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Book</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/klinecharts/dist/umd/klinecharts.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container-fluid vh-100 p-0">
+      <header class="border-secondary border-bottom border-1 p-0">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex px-3 pt-3">
+            <h4 class="mr-3">Assignment</h4>
+            <p class="px-2 text-white fw-bold" href="#">
+              <i class="fa-solid fa-bars"></i>G2404379H
+            </p>
+            <p class="px-2 text-white fw-bold" href="#">
+              <i class="fa-solid fa-bars"></i>G2303794F
+            </p>
+            <p class="px-2 text-white fw-bold" href="#">
+              <i class="fa-solid fa-bars"></i>G2404878K
+            </p>
+            <p class="px-2 text-white fw-bold" href="#">
+              <i class="fa-solid fa-bars"></i>G0840069K
+            </p>
+            <p class="px-2 text-white fw-bold" href="#">
+              <i class="fa-solid fa-bars"></i>G2304906C
+            </p>
+          </div>
+        </div>
+      </header>
+      <main class="row no-gutters px-lg-5 px-md-0 border-bottom border-secondary">
+        <section
+          class="order-book col-3 border-secondary border-left border-right"
+        >
+          <div class="card h-100 text-light">
+            <div class="card-header border-secondary">
+              <p>Order Book</p>
+            </div>
+            <div class="card-body order-book p-0 pl-3 pt-3">
+              <div class="row w-100 pb-3">
+                <div class="col-4">Price(USDT)</div>
+                <div class="col-4 text-right">Amount(BTC)</div>
+                <div class="col-4 text-right">Total</div>
+              </div>
+              <div class="order-book-side asks">
+                <div class="orders" id="asks">
+                  <div class="row w-100">
+                    <div class="col-4 text-success">58,699.77</div>
+                    <div class="col-4 text-right">0.02</div>
+                    <div class="col-4 text-right">1,180.00</div>
+                  </div>
+                  <div class="row w-100">
+                    <div class="col-4 text-success">58,699.42</div>
+                    <div class="col-4 text-right">0.0703</div>
+                    <div class="col-4 text-right">4,147.66</div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex my-2 align-items-center">
+                <h6 class="mr-2 mb-0" id="current-price">58,696.80</h6>
+              </div>
+              <div class="order-book-side bids">
+                <div class="ordersr" id="bids">
+                  <div class="row w-100">
+                    <div class="col-4 text-danger">58,696.77</div>
+                    <div class="col-4 text-right">4.12616</div>
+                    <div class="col-4 text-right">243,430.32</div>
+                  </div>
+                  <div class="row w-100">
+                    <div class="col-4 text-danger">58,696.42</div>
+                    <div class="col-4 text-right">0.5404</div>
+                    <div class="col-4 text-right">31,881.88</div>
+                  </div>
+                  <div class="row w-100">
+                    <div class="col-4 text-danger">58,696.00</div>
+                    <div class="col-4 text-right">0.08237</div>
+                    <div class="col-4 text-right">4,859.50</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="chart col-lg-6 col-md-12">
+          <div class="card text-light">
+            <div class="card-header border-bottom border-secondary">
+              <p>Chart</p>
+            </div>
+            <div
+              class="card-body p-0"
+              id="chart-container"
+              style="width: 100%; height: 400px"
+            >
+              <!-- TradingView chart will be inserted here -->
+            </div>
+            <div class="row p-3 trade-form">
+              <div class=" border-top border-secondary col-md-12 mt-1 mb-4"></div>
+              <!-- Buy Form -->
+              <div class="col-md-6">
+                <div class="card text-light">
+                  <div
+                    class="row w-100 m-0 rounded mb-3 align-items-center small text-secondary py-2 px-0 input-container"
+                  >
+                    <div class="col-3 px-2">Price</div>
+                    <div class="col-9 px-3">
+                      <div class="row">
+                        <input
+                          class="form-group mb-0 col-10 px-2 buyUsdt"
+                          name="price"
+                          min="0.01"
+                          step="0.01"
+                          type="number"
+                          value=""
+                        />
+                        <span class="text-light text-right">USDT</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="row w-100 m-0 rounded mb-3 align-items-center small text-secondary py-2 px-0 input-container"
+                  >
+                    <div class="col-3 px-2">Amount</div>
+                    <div class="col-9 px-2">
+                      <div class="row">
+                        <input
+                          class="form-group mb-0 col-10 px-2 buyAmount"
+                          name="quantity"
+                          min="0.00001000"
+                          step="0.00001000"
+                          type="number"
+                          value=""
+                          data-keeper-edited="yes"
+                        />
+                        <span class="text-light text-right">BTC</span>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-success btn-block mt-4 buyButton">
+                    Buy
+                  </button>
+                </div>
+              </div>
+
+              <!-- Sell Form -->
+              <div class="col-md-6">
+                <div class="card text-light">
+                  <div
+                    class="row w-100 m-0 rounded mb-3 align-items-center small text-secondary py-2 px-0 input-container"
+                  >
+                    <div class="col-3 px-2">Price</div>
+                    <div class="col-9 px-3">
+                      <div class="row">
+                        <input
+                          class="form-group mb-0 col-10 px-2 sellUsdt"
+                          name="price"
+                          min="0.01"
+                          step="0.01"
+                          type="number"
+                          value=""
+                        />
+                        <span class="text-light text-right">USDT</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="row w-100 m-0 rounded mb-3 align-items-center small text-secondary py-2 px-0 input-container"
+                  >
+                    <div class="col-3 px-2">Amount</div>
+                    <div class="col-9 px-2">
+                      <div class="row">
+                        <input
+                          class="form-group mb-0 col-10 px-2 sellAmount"
+                          name="quantity"
+                          min="0.00001000"
+                          step="0.00001000"
+                          type="number"
+                          value=""
+                        />
+                        <span class="text-light text-right">BTC</span>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-danger btn-block mt-4 sellButton">
+                    Sell
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="trades-and-pair-selection col-3 border-secondary border-left border-right"
+        >
+          <div class="card text-light">
+            <div class="card-header border-secondary">
+              <p>My Trade</p>
+            </div>
+            <div class="card-body pr-0" id="trade-history">
+              <div class="row w-100 pb-3">
+                <div class="col-4">Price(USDT)</div>
+                <div class="col-4 text-right">Amount(BTC)</div>
+                <div class="col-4 text-right">Total</div>
+              </div>
+              <div class="order-book-side bids">
+                <div class="orders" id="bidsHistory">
+                  <div class="row w-100">
+                    <div class="col-4 text-success">99999.99</div>
+                    <div class="col-4 text-right">1.00</div>
+                    <div class="col-4 text-right">99999.99</div>
+                  </div>
+                  <div class="row w-100">
+                    <div class="col-4 text-success">99999.99</div>
+                    <div class="col-4 text-right">1.00</div>
+                    <div class="col-4 text-right">99999.99</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+body {
+  background-color: #181a20;
+  color: #eaecef;
+}
+
+.card {
+  background-color: transparent;
+  border: none;
+}
+
+.order-book {
+  font-size: 0.7rem;
+}
+
+.card-header {
+  background-color: transparent;
+  padding: 0;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  align-items: center;
+  font-weight: bold;
+  p {
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+}
+
+.card-body {
+  overflow-y: auto;
+}
+
+.orders span {
+  display: inline-block;
+  width: 33%;
+  padding: 5px 0;
+}
+
+.text-success {
+  color: #0ecb81 !important;
+}
+
+.text-danger {
+  color: #f6465d !important;
+}
+
+footer {
+  background-color: #0b0e11;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 2px solid #2b3139;
+}
+
+header {
+  height: 4rem;
+}
+
+main {
+  height: calc(100vh - 5rem);
+  padding: 0 5rem;
+}
+
+#pair-select {
+  width: 200px; /* Adjust width as needed */
+  height: auto; /* Allows height to adjust based on content */
+  border: none;
+  padding: 10px; /* Padding to mimic a div */
+  box-sizing: border-box; /* Ensure padding is included in width/height */
+  background: transparent; /* Background color of the select */
+  display: block; /* Make it behave like a block element */
+}
+
+#pair-select option {
+  padding: 5px; /* Space inside each option */
+  border-bottom: 1px solid #ddd; /* Separate each option with a line */
+  cursor: pointer; /* Pointer cursor on hover */
+  border: none;
+  background: transparent;
+}
+
+#pair-select option:hover {
+  background: transparent;
+}
+
+#pair-select option:last-child {
+  border-bottom: none; /* Remove border from the last option */
+}
+
+#pair-select option:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+#trade-history {
+  font-size: 0.7rem;
+}
+
+.trade-form input {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  text-align: right;
+}
+
+.trade-form input:focus {
+  border: none;
+  outline: none;
+}
+
+.trade-form input::placeholder {
+  color: #848e9c;
+}
+
+.trade-form input::-webkit-outer-spin-button,
+.trade-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.trade-form .input-container {
+  background-color: #2b3139;
+}
+
